@@ -1,37 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Habits</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Color</th>
-      <th>Length</th>
-      <th>Target</th>
-      <th>Real</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @habits.each do |habit| %>
-      <tr>
-        <td><%= habit.name %></td>
-        <td><%= habit.color %></td>
-        <td><%= habit.length %></td>
-        <td><%= habit.target %></td>
-        <td><%= habit.real %></td>
-        <td><%= habit.date %></td>
-        <td><%= link_to 'Show', habit %></td>
-        <td><%= link_to 'Edit', edit_habit_path(habit) %></td>
-        <td><%= link_to 'Destroy', habit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Habit', new_habit_path %>
+<%= render @habits %>

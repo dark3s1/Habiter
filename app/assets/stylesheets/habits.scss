@@ -1,3 +1,19 @@
 // Place all the styles related to the habits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.habit-title-area {
+  height: 80px;
+}
+
+.habit-index-area {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: calc(100% - 80px);
+  max-height: calc(100% - 80px);
+}
+
+.habit-card{
+  box-shadow: 0;
+}

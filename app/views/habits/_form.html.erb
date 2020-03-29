@@ -1,47 +1,38 @@
-<%= form_with(model: habit, local: true) do |form| %>
-  <% if habit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(habit.errors.count, "error") %> prohibited this habit from being saved:</h2>
-
-      <ul>
-      <% habit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="modal fade" id="habitModal" tabindex="-1" role="dialog" aria-labelledby="habitModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_with(model: habit, remote: true) do |form| %>
+        <div class="modal-header">
+          <h5 class="modal-title" id="habitModal"><%= "#{params[:action].camelize} #{habit.model_name.human}" %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% if habit.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(habit.errors.count, "error") %> prohibited this habit from being saved:</h2>
+              <ul>
+                <% habit.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-group field">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+            <%= form.label :color %>
+            <%= form.color_field :color %>
+            <%= form.label :target %>
+            <%= form.number_field :target %>
+          </div>
+        </div>
+        <div class="modal-footer actions">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= form.submit %>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div class="field">
-    <%= form.label :length %>
-    <%= form.number_field :length %>
-  </div>
-
-  <div class="field">
-    <%= form.label :target %>
-    <%= form.number_field :target %>
-  </div>
-
-  <div class="field">
-    <%= form.label :real %>
-    <%= form.number_field :real %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

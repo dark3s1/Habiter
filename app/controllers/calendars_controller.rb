@@ -4,6 +4,7 @@ class CalendarsController < ApplicationController
   # GET /calendars
   # GET /calendars.json
   def index
+    @habits = current_user.habits.all
     @calendars = Calendar.all
   end
 
