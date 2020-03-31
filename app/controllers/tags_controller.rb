@@ -1,10 +1,11 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_tag
 
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = current_user.tags.all
   end
 
   # GET /tags/1
@@ -14,7 +15,7 @@ class TagsController < ApplicationController
 
   # GET /tags/new
   def new
-    @tag = Tag.new
+    @tag = current_user.tags.all
   end
 
   # GET /tags/1/edit
@@ -24,8 +25,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
-
+    @tag = current_user.tags.new(tag_params)
     respond_to do |format|
       if @tag.save
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }

@@ -1,24 +1,15 @@
 <div class="card-body pr-1">
-  <div class="btn-group position-absolute" style="top: 10px; right: 4px">
-    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-ellipsis-v"></i> <%# 縦3つ点ボタン %>
+  <% @habits.each do |habit| %>
+    <td><%= habit.name %></td>
+    <td><%= habit.target %></td>
+    <button type="submit" class="btn right" >
+      <%= link_to edit_habit_path(habit), remote: true, method: :get do %> <%# 編集ボタン %>
+        <i class="fas fa-cog"></i>
+      <% end %>
+      <%= link_to habit, remote: true, data: { confirm: '本当に削除しますか?' }, method: :get do %> <%# ゴミ箱ボタン %>
+        <i class="fas fa-trash"></i>
+      <% end %>
     </button>
-
-    <%= habits.each do |habit| %>
-    <div class="dropdown-menu dropdown-menu-right text-middle">
-      <div class="dropdown-divider"></div>
-      <%= link_to '編集', edit_habit_path(habit), class: "dropdown-item", remote: true %>
-      <%= link_to '削除',
-          habit,
-          method: :delete,
-          class: "dropdown-item text-danger",
-          remote: true, data: { confirm: '本当に削除しますか?' } %>
-    </div>
-  </div>
+    <div class="habit-border"></div>
   <% end %>
-  <div class="card-text">
-    <small class="text-muted">
-      <%= habit.created_at.strftime('%Y/%m/%d') %>
-    </small>
-  </div>
 </div>

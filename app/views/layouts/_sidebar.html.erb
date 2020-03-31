@@ -1,13 +1,14 @@
 <div class="sidebar">
   <i class="sidebar_header">Habits</i>
     <%= link_to new_habit_path, title: "New", class: "btn p-0 text-dark", remote: true do %>
-      <i class="fas fa-plus align-middle pr-1"></i><span class="align-middle">+</span>
+      <i class="fas fa-plus align-middle pr-1"></i>
     <% end %>
+    <i class="sidebar_tar">Target</i>
     <div class="pt-3 p-1 text-nowrap habit-index-area">
-      <%= render "habits/habit", habits: @habits %>
+      <%= render "habits/habit" %>
     </div>
   <i class="sidebar_header">Tags</i>
     <%= link_to new_tag_path, title: "New", class: "btn p-0 text-dark", remote: true do %>
-      <i class="fas fa-plus align-middle pr-1"></i><span class="align-middle">+</span>
+      <i class="fas fa-plus align-middle pr-1"></i>
     <% end %>
 </div>
