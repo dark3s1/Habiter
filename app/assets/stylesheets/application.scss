@@ -25,6 +25,7 @@
 @import url("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
 
 .sidebar {
+  position: relative; 
   min-height: 100vh;
   height: 100%;
   width: 220px;
@@ -50,5 +51,29 @@
   text-transform: uppercase;
   font-weight: 700;
   width: 165px;
+  position: relative;
+}
+
+.sidebar_tar{
+  position: relative; 
+  top: 25px;
+  right: 8px;
+}
+
+.right{
+  position: absolute;
+  right: 0;
+}
+
+.side-index-area {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: calc(100% - 80px);
+  max-height: calc(100% - 80px);
+  padding-top: 15px;
+}
+
+.card-body{
   position: relative;
 }

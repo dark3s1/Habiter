@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_habits
+  before_action :set_habit, only: [:show, :edit, :update, :destroy]
 
   # GET /habits
   # GET /habits.json
@@ -28,6 +28,7 @@ class HabitsController < ApplicationController
       else
         format.html { @status = false }
         format.json { render json: @habit.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
       end
     end
   end
@@ -53,12 +54,12 @@ class HabitsController < ApplicationController
   end
 
   private
-    def set_habit
-      @habit = current_user.habits.find_by(id: params[:id])
-      redirect_to(habits_url, alert: "ERROR!!") if @habit.blank?
-    end
+  def set_habit
+    @habit = current_user.habits.find_by(id: params[:id])
+    redirect_to(habits_url, alert: "ERROR!!") if @habit.blank?
+  end
 
-    def habit_params
-      params.require(:habit).permit(:name, :color, :length, :target, :real, :date)
-    end
+  def habit_params
+    params.require(:habit).permit(:name, :color, :length, :target, :real, :date)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_063408) do
+ActiveRecord::Schema.define(version: 2020_03_31_073248) do
 
   create_table "calendars", force: :cascade do |t|
     t.date "date"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_03_29_063408) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

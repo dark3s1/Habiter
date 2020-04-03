@@ -2,18 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.habit-title-area {
-  height: 80px;
-}
-
-.habit-index-area {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  height: calc(100% - 80px);
-  max-height: calc(100% - 80px);
-}
-
 .habit-card{
   box-shadow: 0;
 }
@@ -22,14 +10,4 @@
   width: 60px;
   border-width: 3px;
   border-bottom-style: solid;
-}
-
-.sidebar_tar{
-  position: relative; 
-  top: 25px;
-  right: 8px;
-}
-
-.right{
-  float: right;
 }

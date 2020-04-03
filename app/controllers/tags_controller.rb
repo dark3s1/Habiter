@@ -33,6 +33,7 @@ class TagsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
       end
     end
   end

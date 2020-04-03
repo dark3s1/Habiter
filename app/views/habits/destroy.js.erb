@@ -1,0 +1,5 @@
+$("#habitModal").modal("hide");
+$("body").removeClass("modal-open");
+$(".modal-backdrop").remove();
+
+$('[data-model_name="habit"]').filter('[data-id="<%= @habit.id %>"]').remove();

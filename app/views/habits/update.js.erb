@@ -1,0 +1,11 @@
+$("#habitModal").modal("hide");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+
+<% if @status %>
+$('[data-model_name="habit"]').filter('[data-id="<%= @habit.id %>"]').replaceWith("<%= j(render @habit) %>");
+
+<% else %>
+$("#modalArea").html("<%= j(render 'form', habit: @habit) %>")
+$("#modalArea").find(".modal").modal('show')
+<% end %>

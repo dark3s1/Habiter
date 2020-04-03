@@ -1,0 +1,8 @@
+$("#habitModal").modal("hide");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+
+$("#habitsIndex").append("<%= j(render @habit) %>");
+
+$("#modalArea").html("<%= j(render 'habits/form', habit: @habit) %>")
+$("#modalArea").find(".modal").modal('show')
