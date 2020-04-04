@@ -1,11 +1,13 @@
-$("#tagModal").modal("hide");
-$('body').removeClass('modal-open');
-$('.modal-backdrop').remove();
+$('.field input#tag_name').val("")
+$('.field input#tag_name').focus();
 
 <% if @status %>
-$("#tagsIndex").append("<%= j(render @tag) %>");
+$("#modalArea")
+  .find("#tagIndex")
+  .html('<%= j(render partial: "tags/tag", collection: current_user.tags.select(&:persisted?), as: :tag) %>')
 
 <% else %>
+<%= render 'remove_modal' %>
 $("#modalArea").html("<%= j(render 'tags/form', tag: @tag) %>")
-$("#modalArea").find(".modal").modal('show')
+<%= render 'show_modal' %>
 <% end %>

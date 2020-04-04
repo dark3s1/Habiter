@@ -1,7 +1,9 @@
-$("#modalArea").html("<%= j(render 'form', tag: @tag) %>");
+<%= render 'remove_modal' %>
 
-$("#modalArea").find(".modal").on('shown.bs.modal', () => {
-  $("#modalArea").find("form input[type=text]")[0].focus();
-})
+$("#modalArea").html(
+  "<%= j(render 'edit_form', tag: @tag) %>"
+);
 
-$("#modalArea").find(".modal").modal("show");
+<%= render 'focus_modal' %>
+
+<%= render 'show_modal' %>

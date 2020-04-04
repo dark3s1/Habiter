@@ -72,3 +72,5 @@ gem 'devise', '~> 4.2'
 gem 'acts_as_list', '~> 0.9.19'
 
 gem 'rails-ujs'
+
+gem 'simple_calendar', '~> 2.0'

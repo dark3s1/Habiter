@@ -50,6 +50,6 @@ class HabitsController < ApplicationController
   end
 
   def habit_params
-    params.require(:habit).permit(:name, :color, :length, :target, :real, :date)
+    params.require(:habit).permit(:name, :color, :length, :target, :real, :date, tag_ids: [])
   end
 end

@@ -28,6 +28,16 @@
             <%= form.number_field :target %>
           </div>
         </div>
+        <div class="field">
+            <%= form.collection_check_boxes :tag_ids, current_user.tags, :id, :name do |b| %>
+              <%= b.label(class: "form-check") do %>
+                <%= b.check_box(class: "form-check-input") %>
+                <div class="btn btn-secondary" >
+                  <%= b.text %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         <div class="modal-footer actions">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <%= form.submit %>

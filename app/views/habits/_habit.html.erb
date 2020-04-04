@@ -11,5 +11,6 @@
       <% end %>
     </button>
     <div class="habit-border"></div>
+    <%= render "habits/tag", collection: habit.tags, as: :tag %>
   <% end %>
 </div>

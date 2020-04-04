@@ -1,5 +1,3 @@
-$("#tagModal").modal("hide");
-$("body").removeClass("modal-open");
-$(".modal-backdrop").remove();
-
 $('[data-model_name="tag"]').filter('[data-id="<%= @tag.id %>"]').remove();
+
+$('#habitsIndex').html('<%= j(render partial: "habits/habit", collection: current_user.habits, as: :habit) %>')
