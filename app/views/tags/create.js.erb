@@ -1,0 +1,11 @@
+$("#tagModal").modal("hide");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+
+<% if @status %>
+$("#tagsIndex").append("<%= j(render @tag) %>");
+
+<% else %>
+$("#modalArea").html("<%= j(render 'tags/form', tag: @tag) %>")
+$("#modalArea").find(".modal").modal('show')
+<% end %>

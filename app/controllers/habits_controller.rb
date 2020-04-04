@@ -1,6 +1,6 @@
 class HabitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_habit, only: [:show, :edit, :update, :destroy]
+  before_action :set_habit, only: [:edit, :update, :destroy]
 
   # GET /habits
   # GET /habits.json
@@ -21,30 +21,21 @@ class HabitsController < ApplicationController
   # POST /habits.json
   def create
     @habit = current_user.habits.new(habit_params)
-    respond_to do |format|
       if @habit.save
-        format.html { @status = true }
-        format.json { render :show, status: :created, location: @habit }
+        @status = true
       else
-        format.html { @status = false }
-        format.json { render json: @habit.errors, status: :unprocessable_entity }
-        format.js { @status = "fail" }
+        @status = false
       end
-    end
   end
 
   # PATCH/PUT /habits/1
   # PATCH/PUT /habits/1.json
   def update
-    respond_to do |format|
       if @habit.update(habit_params)
-        format.html { @status = true }
-        format.json { render :show, status: :ok, location: @habit }
+        @status = true
       else
-        format.html { @status = false }
-        format.json { render json: @habit.errors, status: :unprocessable_entity }
+        @status = false
       end
-    end
   end
 
   # DELETE /habits/1
@@ -56,7 +47,6 @@ class HabitsController < ApplicationController
   private
   def set_habit
     @habit = current_user.habits.find_by(id: params[:id])
-    redirect_to(habits_url, alert: "ERROR!!") if @habit.blank?
   end
 
   def habit_params

@@ -4,7 +4,7 @@
       <%= link_to edit_tag_path(tag), remote: true, method: :get do %> <%# 編集ボタン %>
         <i class="fas fa-cog"></i>
       <% end %>
-      <%= link_to tag, remote: true, data: { confirm: '本当に削除しますか?' }, method: :get do %> <%# ゴミ箱ボタン %>
+      <%= link_to tag, remote: true, data: { confirm: '本当に削除しますか?' }, method: :delete do %> <%# ゴミ箱ボタン %>
         <i class="fas fa-trash"></i>
       <% end %>
     </button>
