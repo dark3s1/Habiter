@@ -1,10 +1,11 @@
-<%= render 'remove_modal' %>
+ <%= render 'remove_modal' %> 
 
 <% if @status %>
 $('#habitsIndex').html('<%= j(render partial: "habits/habit", collection: current_user.habits, as: :habit) %>')
 $("#modalArea").html("<%= j(render 'form', tag: Tag.new) %>")
 
 <%= render 'focus_modal' %>
+
 <%= render 'show_modal' %>
 
 <% else %>

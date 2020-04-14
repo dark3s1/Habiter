@@ -21,6 +21,7 @@ class HabitsController < ApplicationController
   # POST /habits.json
   def create
     @habit = current_user.habits.new(habit_params)
+    @habits = current_user.habits.all
       if @habit.save
         @status = true
       else
@@ -50,6 +51,6 @@ class HabitsController < ApplicationController
   end
 
   def habit_params
-    params.require(:habit).permit(:name, :color, :length, :target, :real, :date, tag_ids: [])
+    params.require(:habit).permit(:name, :color, :length, :target, :real, :date, :user_id, tag_ids: [])
   end
 end

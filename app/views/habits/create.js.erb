@@ -1,11 +1,11 @@
-$("#habitModal").modal("hide");
-$('body').removeClass('modal-open');
-$('.modal-backdrop').remove();
-
 <% if @status %>
-$("#habitsIndex").append("<%= j(render @habit) %>");
+$("#habitsIndex").replaceWith("<%= j(render @habit, habits: @habits ) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'habits/form', habit: @habit) %>")
 $("#modalArea").find(".modal").modal('show')
 <% end %>
+
+$("#habitModal").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

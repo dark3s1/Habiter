@@ -1,5 +1,2 @@
-$("#habitModal").modal("hide");
-$("body").removeClass("modal-open");
-$(".modal-backdrop").remove();
-
-$('[data-model_name="habit"]').filter('[data-id="<%= @habit.id %>"]').remove();
+$("#habitsIndex").filter('[data-id="<%= @habit.id %>"]').remove();
+$("#habitsIndex").replaceWith("<%= j(render @habit, habits: @habits ) %>");

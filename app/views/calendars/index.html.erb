@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>habits</h1>
-
-<table>
-</table>
-
-<%= month_calendar events: @habits do |date, habits| %>
-  <%= date.day %>
-  <% @habits.each do |habit| %>
-    <div>
-      <%= link_to habit.name, habit %>
+<div class="calendar-posi">
+  <%= month_calendar events: @calendars do |date, calendars| %>
+    <%= link_to new_calendar_path, title: "New", class: "btn blue", remote: true do %>
+      <%= date.day %>
+    <% end %>
+    <div id="calendarsIndex">
+      <%= render "calendars/calendar" %>
     </div>
   <% end %>
-<% end %>
+</div>
+
+

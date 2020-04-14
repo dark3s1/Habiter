@@ -21,17 +21,17 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = current_user.tags.new(tag_params)
-      if @tag.save
-        @status = true
-      else
-        @status = false
-      end
+    if @tag.save
+      @status = true
+    else
+      @status = false
+    end
   end
 
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
-    if @tag.update(habit_params)
+    if @tag.update(tag_params)
         @status = true
     else
         @status = false
@@ -47,11 +47,11 @@ class TagsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
-      @tag = current_user.tags.find_by(id: params[:id])
+      @tag = current_user.tags.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:name, :color)
+      params.require(:tag).permit(:name, :color, :user_id)
     end
 end

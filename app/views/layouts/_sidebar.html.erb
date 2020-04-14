@@ -1,13 +1,13 @@
 <div class="sidebar">
-  <i class="sidebar_header">Habits</i>
+  <i class="sidebar_header">習慣</i>
   <%= link_to new_habit_path, title: "New", class: "btn", remote: true do %>
     <i class="fas fa-plus"></i>
   <% end %>
-  <i class="sidebar_tar">Target</i>
+  <i class="sidebar_tar">時間（分）</i>
   <div class="side-index-area" id="habitsIndex">
-    <%= render "habits/habit" %>
+    <%= render "habits/habit", habits: @habits %>
   </div>
-  <i class="sidebar_header">Tags</i>
+  <i class="sidebar_header">タグ</i>
   <%= link_to new_tag_path, title: "New", class: "btn", remote: true do %>
     <i class="fas fa-plus"></i>
   <% end %>

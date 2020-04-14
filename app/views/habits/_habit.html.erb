@@ -1,7 +1,7 @@
 <div class="card-body pr-1">
-  <% @habits.each do |habit| %>
+  <% habits.each do |habit| %>
     <td><%= habit.name %></td>
-    <td><%= habit.target %></td>
+    <i class="sidebar_tar_child"><%= habit.target %></i>
     <button type="submit" class="btn right" >
       <%= link_to edit_habit_path(habit), remote: true, method: :get do %> <%# 編集ボタン %>
         <i class="fas fa-cog"></i>
@@ -10,7 +10,10 @@
         <i class="fas fa-trash"></i>
       <% end %>
     </button>
-    <div class="habit-border"></div>
-    <%= render "habits/tag", collection: habit.tags, as: :tag %>
+    <div class="habit-border" style= "border-color:<%= habit.color %>;"></div>
+    <div>
+      <%= render partial: "habits/tag", collection: habit.tags, as: :tag %>
+    </div>
+    </br>
   <% end %>
 </div>
