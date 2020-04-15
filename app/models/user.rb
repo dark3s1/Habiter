@@ -6,5 +6,5 @@ class User < ApplicationRecord
          
   has_many :habits, dependent: :destroy
   has_many :tags, dependent: :destroy
-  has_one :calendar, dependent: :destroy
+  has_many :calendar, dependent: :destroy
 end

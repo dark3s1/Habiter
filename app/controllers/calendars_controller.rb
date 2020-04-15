@@ -17,7 +17,7 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/new
   def new
-    @calendar = current_user.calendars.new
+    @calendar = current_user.calendar.new
   end
 
   # GET /calendars/1/edit
@@ -27,8 +27,7 @@ class CalendarsController < ApplicationController
   # POST /calendars
   # POST /calendars.json
   def create
-    @calendar = current_user.calendars.new(calendar_params)
-    @calendars = current_user.calendars.all
+    @calendar = current_user.calendar.new(calendar_params)
       if @calendar.save
         @status = true
       else
@@ -60,6 +59,6 @@ class CalendarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def calendar_params
-      params.require(:calendar).permit(:date, :color)
+      params.require(:calendar).permit(:date, :color, :user_id, habit_ids:[])
     end
 end

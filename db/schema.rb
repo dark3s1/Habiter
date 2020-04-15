@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_132936) do
+ActiveRecord::Schema.define(version: 2020_04_15_060752) do
+
+  create_table "calendar_habits", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "habit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_id"], name: "index_calendar_habits_on_calendar_id"
+    t.index ["habit_id"], name: "index_calendar_habits_on_habit_id"
+  end
 
   create_table "calendars", force: :cascade do |t|
     t.date "date"
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_calendars_on_user_id"
   end
 
   create_table "habit_tags", force: :cascade do |t|
