@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
   # GET /calendars
   # GET /calendars.json
   def index
-    @calendars = current_user.calendar.all
+    @calendars = current_user.calendars.all
     @habits = current_user.habits.all
     @tags = current_user.tags.all
   end
@@ -17,7 +17,7 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/new
   def new
-    @calendar = current_user.calendar.new
+    @calendar = current_user.calendars.new
   end
 
   # GET /calendars/1/edit
@@ -27,7 +27,8 @@ class CalendarsController < ApplicationController
   # POST /calendars
   # POST /calendars.json
   def create
-    @calendar = current_user.calendar.new(calendar_params)
+    @calendar = current_user.calendars.new(calendar_params)
+    @habits = current_user.habits.all
       if @calendar.save
         @status = true
       else

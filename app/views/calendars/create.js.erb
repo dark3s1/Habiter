@@ -1,11 +1,12 @@
 <% if @status %>
-$("#calendarsIndex").replaceWith("<%= j(render @calendar, @habits ) %>");
+<% byebug %>
+$("#calendarsIndex").replaceWith("<%= j(render "calendars/calendar") %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'calendars/form', habit: @habit) %>")
 $("#modalArea").find(".modal").modal('show')
 <% end %>
 
-$("#habitModal").modal('hide');
+$("#calendarModal").modal('hide');
 $('body').removeClass('modal-open');
 $('.modal-backdrop').remove();

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="calendar-posi">
-  <%= month_calendar events: @calendars do |date, calendars| %>
+  <%= month_calendar events: @habits do |date, habits| %>
     <%= link_to new_calendar_path, title: "New", class: "btn blue", remote: true do %>
       <%= date.day %>
     <% end %>
