@@ -1,14 +1,24 @@
-<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel">
+<div class="modal fade" id="realModal" tabindex="-1" role="dialog" aria-labelledby="realModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <%= form_with(model: habit, remote: true) do |form| %>
+      <%= form_with(model: @real, remote: true) do |form| %>
         <div class="modal-header">
-          <h5 class="modal-title" id="calendarModal"><%= "#{params[:action].camelize}" %></h5>
+          <h5 class="modal-title"><%= "#{params[:action].camelize}" %></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <% if @real.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@real.errors.count, "error") %> prohibited this real from being saved:</h2>
+              <ul>
+                <% @real.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <div class="field">
             <%= form.collection_check_boxes :habit_ids, current_user.habits, :id, :name do |b| %>
               <%= b.label(class: "form-check") do %>
@@ -20,10 +30,10 @@
             <% end %>
           </div>
           <div class="field">
-            <%= form.label :日 %>
-            <%= form.date_field :date, value: Time.now.strftime("%Y-%m-%d") %></br>
-            <%= form.label :実際に行なった時間 %>
-            <%= form.number_field :real, value: 30 %>
+            <%= form.label :time %>
+            <%= form.number_field :time %>
+            <%= form.label :date %>
+            <%= form.date_field :date, value: Time.now.strftime("%Y-%m-%d") %>
           </div>
         </div>
         <div class="modal-footer actions">

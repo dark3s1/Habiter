@@ -1,0 +1,11 @@
+<% if @status %>
+$("#realsIndex").replaceWith("<%= j(render "reals/real", habits: @habits ) %>");
+
+<% else %>
+$("#modalArea").html("<%= j(render 'reals/form', habit: @habit) %>")
+$("#modalArea").find(".modal").modal('show')
+<% end %>
+
+$("#realModal").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

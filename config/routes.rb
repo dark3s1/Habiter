@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :calendars
+  resources :plans
+  resources :reals
   resources :tags
   resources :habits
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

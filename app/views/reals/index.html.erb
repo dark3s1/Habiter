@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<div class="calendar-posi">
+  <%= month_calendar events: @reals do |date, reals| %>
+    <%= link_to new_real_path, title: "New", class: "btn blue", remote: true do %>
+      <%= date.day %>
+    <% end %>
+    <% habits.each do |habit| %>
+      <div id="realsIndex">
+        <%= render "reals/real" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -3,7 +3,7 @@
   <%= link_to new_habit_path, title: "New", class: "btn", remote: true do %>
     <i class="fas fa-plus"></i>
   <% end %>
-  <i class="sidebar_tar">時間（分）</i>
+  <i class="sidebar_tar">目標（分）</i>
   <div class="side-index-area" id="habitsIndex">
     <%= render "habits/habit", habits: @habits %>
   </div>
