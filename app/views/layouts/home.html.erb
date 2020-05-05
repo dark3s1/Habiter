@@ -11,7 +11,7 @@
   <body>
     <%= render "layouts/header" %>
     <%= render "layouts/flash" %>
-    <%= link_to_if user_signed_in?, image_tag('dark02.bmp'), calendars_path %>
+    <%= link_to_if user_signed_in?, image_tag('dark02.bmp'), reals_path %>
     <main>
       <div class="container">
         <%= yield %>

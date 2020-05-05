@@ -1,5 +1,5 @@
 <% if @status %>
-$("#habitsIndex").replaceWith("<%= j(render @habit, habits: @habits, plans: @plans ) %>");
+$("#habitsIndex").replaceWith("<%= j(render @habit, habits: @habits ) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'habits/form', habit: @habit) %>")

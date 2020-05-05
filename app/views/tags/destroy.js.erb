@@ -1,3 +1,1 @@
-$('[data-model_name="tag"]').filter('[data-id="<%= @tag.id %>"]').remove();
-
-$('#habitsIndex').html('<%= j(render partial: "habits/habit", collection: current_user.habits, as: :habit) %>')
+$("#tagsIndex").find('#tags_<%= @tag.name %>').remove();

@@ -10,9 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
- *= require simple_calendar
  */
 
 @import "bootstrap";
@@ -34,7 +34,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
-  background-color: #EEEEEE;
   @media screen and (max-width: 600px) {
     display: none;
     position: absolute;
@@ -100,8 +99,6 @@
   width: 100%;
   float: left;
   overflow-y: auto;
-  overflow-x: hidden;
-  background-color: #EEEEEE;
   @media screen and (max-width: 600px) {
     display: none;
     position: absolute;
@@ -129,4 +126,8 @@
   width: 0px;
   border-width: 3px;
   border-bottom-style: solid;
+}
+
+.table td{
+  padding: 0px;
 }

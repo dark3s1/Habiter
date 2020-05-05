@@ -2,13 +2,14 @@
 
 <div class="calendar-posi">
   <%= month_calendar events: @reals do |date, reals| %>
-    <%= link_to new_real_path, title: "New", class: "btn blue", remote: true do %>
-      <%= date.day %>
+    <%= form_with(url: new_real_path, method: :get, remote: true) do |form| %>
+      <%= form.submit date.day, class: "btn blue" %>
+      <%= form.hidden_field :date, :value => date %>
     <% end %>
-    <% habits.each do |habit| %>
-      <div id="realsIndex">
-        <%= render "reals/real" %>
-      </div>
-    <% end %>
+    <div id="realsIndex_<%= date %>">
+      <% reals.each do |real| %>
+        <%= render "real", real: real %>
+      <% end %>
+    </div>
   <% end %>
 </div>

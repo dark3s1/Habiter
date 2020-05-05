@@ -1,9 +1,10 @@
 <% if @status %>
-$("#realsIndex").replaceWith("<%= j(render "reals/real", habits: @habits ) %>");
+$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").append("<%= j(render "real", real: @real) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'reals/form', habit: @habit) %>")
 $("#modalArea").find(".modal").modal('show')
+
 <% end %>
 
 $("#realModal").modal('hide');

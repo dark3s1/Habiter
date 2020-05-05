@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_085834) do
+ActiveRecord::Schema.define(version: 2020_04_24_081704) do
 
   create_table "calendar_habits", force: :cascade do |t|
     t.integer "calendar_id"
@@ -65,9 +65,12 @@ ActiveRecord::Schema.define(version: 2020_04_17_085834) do
 
   create_table "reals", force: :cascade do |t|
     t.integer "time"
-    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "habit_id"
+    t.datetime "start_time"
+    t.integer "position"
+    t.index ["habit_id"], name: "index_reals_on_habit_id"
   end
 
   create_table "tags", force: :cascade do |t|

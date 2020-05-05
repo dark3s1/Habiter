@@ -1,2 +1,1 @@
-$("#habitsIndex").filter('[data-id="<%= @habit.id %>"]').remove();
-$("#habitsIndex").replaceWith("<%= j(render @habit, habits: @habits ) %>");
+$("#habitsIndex").find('#habits_<%= @habit.name %>').remove();

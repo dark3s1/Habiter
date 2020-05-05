@@ -1,0 +1,5 @@
+$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").find('.real_<%= @real.id %>').remove();
+
+$("#realModal").modal('hide');
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();

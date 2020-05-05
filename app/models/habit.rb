@@ -5,7 +5,7 @@ class Habit < ApplicationRecord
     accepts_nested_attributes_for :habit_tags
 
     has_many :plans
-    has_many :reals
+    has_many :reals, dependent: :destroy
 
     validates :name, presence: true
     validates :target, presence: true

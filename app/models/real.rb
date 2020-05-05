@@ -1,7 +1,10 @@
 class Real < ApplicationRecord
-  belongs_to :habits
+  belongs_to :habit, optional: true
   
-  def start_time
-    self.date
-  end
+  acts_as_list
+  attr_accessor :date
+  
+  validates :time, presence: true
+  validates :start_time, presence: true
 end
+

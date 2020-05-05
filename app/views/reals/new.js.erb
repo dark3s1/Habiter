@@ -1,7 +1,3 @@
-$("#modalArea").html("<%= j(render 'form', habit: @habit) %>")
-
-$("#modalArea").find(".modal").on('shown.bs.modal', () => {
-  $("#modalArea").find("form input[type=text]")[0].focus();
-})
+$("#modalArea").html("<%= j(render 'form', real: @real, date: @day) %>")
 
 $("#modalArea").find(".modal").modal('show')
