@@ -1,0 +1,3 @@
+$("#modalArea").html("<%= j(render 'form', positionparent: @positionparent, real: @real, date: @day) %>")
+
+$("#modalArea").find(".modal").modal('show')

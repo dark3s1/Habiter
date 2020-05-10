@@ -1,18 +1,19 @@
-class RealsController < ApplicationController
+class PositionparentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_real, only: [:edit, :update, :destroy, :move]
+  before_action :set_real, only: [:edit, :update, :destroy]
   before_action :set_habit
 
-  # GET /reals
+  # GET /positionparents
   def index
     @reals = Real.all.order(:position)
     @habits = current_user.habits.all
     @tags = current_user.tags.all
+    @positionparents = Positionparent.all
   end
 
-  # GET /reals/new
   def new
-    @real = Real.new
+    @positionparent = Positionparent.new
+    @real = @positionparent.reals.build
     @tags = current_user.tags.all
     @day = params[:date].to_date
   end
@@ -24,10 +25,8 @@ class RealsController < ApplicationController
   # POST /reals
   # POST /reals.json
   def create
-    @real = Real.new(real_params)
-    @habits = current_user.habits.all
-    @tags = current_user.tags.all
-    if @real.save
+    @positionparent = Positionparent.new(positionparent_params)
+    if @positionparent.save
       @status = true
     else
       @status = false
@@ -37,7 +36,7 @@ class RealsController < ApplicationController
   # PATCH/PUT /reals/1
   # PATCH/PUT /reals/1.json
   def update
-    if @real.update(real_params)
+    if @positionparent.update(positionparent_params)
       @status = true
     else
       @status = false
@@ -47,24 +46,12 @@ class RealsController < ApplicationController
   # DELETE /reals/1
   # DELETE /reals/1.json
   def destroy
-    @real.destroy
+    @positionparent.destroy
     respond_to do |format|
       format.js
     end
   end
-  
-  def move
-    case params[:move]
-    when 'up'
-      @real.move_higher
-      @tar = @reals.lower_item
-    when 'down'
-      @real.move_lower
-      @tar = @reals.higher_item
-    else
-    end
-  end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_real
@@ -77,6 +64,10 @@ class RealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def real_params
-      params.require(:real).permit(:time, :start_time, :habit_id)
+      params.require(:real).permit(:time, :habit_id, :position, :positionparent_id)
+    end
+    
+    def positionparent_params
+      params.require(:positionparent).permit(:start_time, reals_attributes: [:id, :time, :habit_id, :position, :positionparent_id])
     end
 end

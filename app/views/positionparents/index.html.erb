@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div class="calendar-posi">
+  <%= month_calendar events: @positionparents do |date, positionparents| %>
+    <%= form_with(url: new_positionparent_real_path, method: :get, remote: true) do |form| %>
+      <%= form.submit date.day, class: "btn blue" %>
+      <%= form.hidden_field :date, :value => date %>
+    <% end %>
+    <div id="realsIndex_<%= date %>">
+      <% @reals.each do |real| %>
+        <%= render "reals/real", real: real %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

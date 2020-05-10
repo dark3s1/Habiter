@@ -1,5 +1,5 @@
 <% if @status %>
-$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").append("<%= j(render "real", real: @real) %>");
+$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").append("<%= j(render "real", real: @real, b_real: @b_real) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'reals/form', habit: @habit) %>")

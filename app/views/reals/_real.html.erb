@@ -1,3 +1,5 @@
+
+
 <div class="real_<%= real.id %>">
   <%= link_to edit_real_path(real), remote: true do %>
     <% if real.habit.target <= real.time %>
@@ -6,5 +8,8 @@
       <div class="cal-border" style="width: <%= real.time * 100 / real.habit.target %>%; border-color:<%= real.habit.color %>;"></div>
     <% end %>
   <% end %>
-  <%= link_to '▲', move_real_path(id: real, move: 'up'), remote: true unless real.position == 1 %>
+  <% if real.position != 1 && real.start_time == b_real.first.start_time %>
+    <%= link_to '▲', move_real_path(id: real, move: 'up'), remote: true %>
+  <% end %>
+  </br>
 </div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :move
     end
     member do
-      get :sort
+      get :sortcheck
     end
   end
   resources :tags
