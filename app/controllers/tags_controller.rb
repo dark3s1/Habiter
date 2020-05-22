@@ -21,7 +21,6 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = current_user.tags.new(tag_params)
-    @tags = current_user.tags.all
     if @tag.save
       @status = true
     else

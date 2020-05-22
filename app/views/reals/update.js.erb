@@ -3,9 +3,10 @@ $('body').removeClass('modal-open');
 $('.modal-backdrop').remove();
 
 <% if @status %>
-$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").append("<%= j(render "real", real: @real) %>");
+$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").find('.real_<%= @real.position %>').replaceWith("<%= j(render @real) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'form', real: @real, date: @day) %>")
 $("#modalArea").find(".modal").modal('show')
+
 <% end %>

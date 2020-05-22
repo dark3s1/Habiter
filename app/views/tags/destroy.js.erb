@@ -1,1 +1,2 @@
 $("#tagsIndex").find('#tags_<%= @tag.name %>').remove();
+$('#habitsIndex').html('<%= j(render partial: "habits/habit", collection: current_user.habits, as: :habit) %>')

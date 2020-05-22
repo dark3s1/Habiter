@@ -1,4 +1,4 @@
-$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").find('.real_<%= @real.id %>').remove();
+$("#realsIndex_<%= @real.start_time.strftime("%Y-%m-%d") %>").find('[data-id="<%= @real.id %>"]').remove();
 
 $("#realModal").modal('hide');
 $('body').removeClass('modal-open');

@@ -8,8 +8,7 @@
     <% end %>
     <div id="realsIndex_<%= date %>">
       <% reals.each do |real| %>
-        <% sortcheck(real.position) %>
-        <%= render partial: 'reals/real', locals: {real: real, b_real: @b_real} %>
+        <%= render 'real', real: real %>
       <% end %>
     </div>
   <% end %>

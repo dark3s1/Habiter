@@ -3,7 +3,7 @@
     <div class="modal-content">
       <%= form_with(model: real, remote: true) do |form| %>
         <div class="modal-header">
-          <h5 class="modal-title"><%= "#{params[:action].camelize}" %></h5>
+          <h5 class="modal-title">実績</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -24,13 +24,13 @@
             <%= form.collection_select :habit_id, current_user.habits.all.order("name"), :id, :name %>
           </div>
           <div class="field">
-            <%= form.label :時間 %>
+            <%= form.label :time %>
             <%= form.number_field :time %>
             <% if real.start_time == nil %>
-              <%= form.label :日付 %>
+              <%= form.label :start_time %>
               <%= form.date_field :start_time, value: date.strftime("%Y-%m-%d") %>
             <% else %>
-              <%= form.label :日付 %>
+              <%= form.label :start_time %>
               <%= form.date_field :start_time, value: real.start_time.strftime("%Y-%m-%d") %>
             <% end %>
           </div>

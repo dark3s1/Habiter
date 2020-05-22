@@ -1,21 +1,18 @@
-<div class="card-body pr-1">
-  <% habits.each do |habit| %>
-    <div id="habits_<%= habit.name %>">
-      <td><%= habit.name %></td>
-      <i class="sidebar_tar_child"><%= habit.target %></i>
-      <button type="submit" class="btn right" >
-        <%= link_to edit_habit_path(habit), remote: true, method: :get do %> <%# 編集ボタン %>
-          <i class="fas fa-cog"></i>
-        <% end %>
-        <%= link_to habit, remote: true, data: { confirm: '本当に削除しますか?' }, method: :delete do %> <%# ゴミ箱ボタン %>
-          <i class="fas fa-trash"></i>
-        <% end %>
-      </button>
-      <div class="habit-border" style= "border-color:<%= habit.color %>;"></div>
-      <div>
-        <%= render partial: "habits/tag", collection: habit.tags, as: :tag %>
-      </div>
-      </br>
+<div id="habits_<%= habit.name %>">
+  <div class="card-body pr-1">
+    <td><%= habit.name %></td>
+    <i class="sidebar_tar_child"><%= habit.target %></i>
+    <button type="submit" class="btn right" >
+      <%= link_to edit_habit_path(habit), remote: true, method: :get do %> <%# 編集ボタン %>
+        <i class="fas fa-cog"></i>
+      <% end %>
+      <%= link_to habit, remote: true, data: { confirm: '本当に削除しますか?' }, method: :delete do %> <%# ゴミ箱ボタン %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </button>
+    <div class="habit-border" style= "border-color:<%= habit.color %>;"></div>
+    <div>
+      <%= render partial: "habits/tag", collection: habit.tags, as: :tag %>
     </div>
-  <% end %>
+  </div>
 </div>

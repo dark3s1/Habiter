@@ -1,10 +1,12 @@
 module RealHelper
-  def sortcheck(p)
+  def sortcheck(p, d)
+    lposi = current_user.reals.where(start_time: d, position: 1..p)
+    @lposi = lposi.minimum("position")
     if p != 1
-      bposi = p - 1
-      @b_real = Real.where(position: bposi)
+      mposi = current_user.reals.where(start_time: d, position: 1..p - 1)
+      @mposi = mposi.where(position: mposi.maximum("position"))
     else
-      @b_real = Real.where(position: p)
+      @mposi = current_user.reals.where(position: 1)
     end
   end
 end

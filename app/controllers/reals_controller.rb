@@ -1,19 +1,19 @@
 class RealsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_real, only: [:edit, :update, :destroy, :move]
-  before_action :set_habit
+  include RealHelper
+  
 
   # GET /reals
   def index
-    @reals = Real.all.order(:position)
+    @reals = current_user.reals.all.order(:position)
     @habits = current_user.habits.all
     @tags = current_user.tags.all
   end
 
   # GET /reals/new
   def new
-    @real = Real.new
-    @tags = current_user.tags.all
+    @real = current_user.reals.new
     @day = params[:date].to_date
   end
 
@@ -24,11 +24,11 @@ class RealsController < ApplicationController
   # POST /reals
   # POST /reals.json
   def create
-    @real = Real.new(real_params)
-    @habits = current_user.habits.all
-    @tags = current_user.tags.all
+    @real = current_user.reals.new(real_params)
+    @day = params[:date].to_d
     if @real.save
       @status = true
+      sortcheck(@real.position, @real.start_time)
     else
       @status = false
     end
@@ -48,31 +48,21 @@ class RealsController < ApplicationController
   # DELETE /reals/1.json
   def destroy
     @real.destroy
-    respond_to do |format|
-      format.js
-    end
   end
   
   def move
-    case params[:move]
-    when 'up'
-      @real.move_higher
-      @tar = @reals.lower_item
-    when 'down'
-      @real.move_lower
-      @tar = @reals.higher_item
-    else
-    end
+      params[:move]
+      sortcheck(@real.position, @real.start_time)
+      upper = @real.position
+      downer = @mposi.first.position
+      @mposi.first.insert_at(upper)
+      @real.insert_at(downer)
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_real
-      @real = Real.find(params[:id])
-    end
-    
-    def set_habit
-      @habits = current_user.habits.all
+      @real = current_user.reals.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

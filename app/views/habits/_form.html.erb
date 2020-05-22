@@ -3,7 +3,7 @@
     <div class="modal-content">
       <%= form_with(model: habit, remote: true) do |form| %>
         <div class="modal-header">
-          <h5 class="modal-title"><%= "#{params[:action].camelize} #{habit.model_name.human}" %></h5>
+          <h5 class="modal-title">習慣</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -21,7 +21,7 @@
           <% end %>
           <div class="field">
             <%= form.label :name %>
-            <%= form.text_field :name %>
+            <%= form.text_field :name, maxlength: 10 %>
             <%= form.label :color %>
             <%= form.color_field :color %>
             <%= form.label :target %>

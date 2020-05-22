@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      habit: 習慣
+      tag: タグ
+      real: 時間
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+      habit:
+        name: 名前
+        color: 色
+        target: 目標(分)
+      tag:
+        name: 名前
+        color: 色
+      real:
+        time: 時間
+        start_time: 日付
+        habit_id: 習慣

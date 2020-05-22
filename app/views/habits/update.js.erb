@@ -3,7 +3,10 @@ $('body').removeClass('modal-open');
 $('.modal-backdrop').remove();
 
 <% if @status %>
-$('[data-model_name="habit"]').filter('[data-id="<%= @habit.id %>"]').replaceWith("<%= j(render @habit) %>");
+$("#habits_<%= @habit.name %>").replaceWith("<%= j(render @habit) %>");
+<% @reals.each do |real| %>
+  $('[data-id="<%= real.id %>"]').replaceWith("<%= j(render real) %>");
+<% end %>
 
 <% else %>
 $("#modalArea").html("<%= j(render 'form', habit: @habit) %>")

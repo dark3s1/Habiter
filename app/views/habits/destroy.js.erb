@@ -1,1 +1,5 @@
-$("#habitsIndex").find('#habits_<%= @habit.name %>').remove();
+$("#habits_<%= @habit.name %>").remove();
+<% for i in 0..@real_co do %>
+  $('[data-id="<%= @real_ids[i] %>"]').remove();
+  $('[data-id="<%= @real_s[i] %>"]').find(".up").replaceWith('</br>');
+<% end %>

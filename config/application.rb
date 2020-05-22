@@ -23,5 +23,7 @@ module Habiter2
       Devise::UnlocksController.layout "devise"
       Devise::PasswordsController.layout "devise"
     end
+    
+    config.i18n.default_locale = :ja
   end
 end

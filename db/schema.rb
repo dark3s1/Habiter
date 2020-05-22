@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_081704) do
-
-  create_table "calendar_habits", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "habit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["calendar_id"], name: "index_calendar_habits_on_calendar_id"
-    t.index ["habit_id"], name: "index_calendar_habits_on_habit_id"
-  end
-
-  create_table "calendars", force: :cascade do |t|
-    t.date "date"
-    t.string "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.datetime "start_time"
-    t.index ["user_id"], name: "index_calendars_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2020_05_21_070124) do
 
   create_table "habit_tags", force: :cascade do |t|
     t.integer "habit_id"
@@ -43,14 +24,10 @@ ActiveRecord::Schema.define(version: 2020_04_24_081704) do
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.string "color"
-    t.integer "length"
     t.integer "target"
-    t.integer "real"
-    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.datetime "start_time"
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
@@ -63,6 +40,13 @@ ActiveRecord::Schema.define(version: 2020_04_24_081704) do
     t.index ["habit_id"], name: "index_plans_on_habit_id"
   end
 
+  create_table "positionparents", force: :cascade do |t|
+    t.date "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_time"
+  end
+
   create_table "reals", force: :cascade do |t|
     t.integer "time"
     t.datetime "created_at", null: false
@@ -70,7 +54,9 @@ ActiveRecord::Schema.define(version: 2020_04_24_081704) do
     t.integer "habit_id"
     t.datetime "start_time"
     t.integer "position"
+    t.integer "user_id"
     t.index ["habit_id"], name: "index_reals_on_habit_id"
+    t.index ["user_id"], name: "index_reals_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|

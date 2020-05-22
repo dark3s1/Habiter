@@ -1,6 +1,4 @@
-
-
-<div class="real_<%= real.id %>">
+<div class="real_<%= real.position %>" data-id="<%= real.id %>">
   <%= link_to edit_real_path(real), remote: true do %>
     <% if real.habit.target <= real.time %>
       <div class="cal-border" style="width: 100%; border-color:<%= real.habit.color %>;"></div>
@@ -8,8 +6,10 @@
       <div class="cal-border" style="width: <%= real.time * 100 / real.habit.target %>%; border-color:<%= real.habit.color %>;"></div>
     <% end %>
   <% end %>
-  <% if real.position != 1 && real.start_time == b_real.first.start_time %>
-    <%= link_to '▲', move_real_path(id: real, move: 'up'), remote: true %>
+  <% sortcheck(real.position, real.start_time) %>
+  <% if real.position != @lposi %>
+    <%= link_to '▲', move_real_path(id: real), remote: true, class: "up" %>
+  <% else %>
+    </br>  
   <% end %>
-  </br>
 </div>

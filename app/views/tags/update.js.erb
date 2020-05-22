@@ -2,11 +2,7 @@
 
 <% if @status %>
 $('#habitsIndex').html('<%= j(render partial: "habits/habit", collection: current_user.habits, as: :habit) %>')
-$("#modalArea").html("<%= j(render 'form', tag: Tag.new) %>")
-
-<%= render 'focus_modal' %>
-
-<%= render 'show_modal' %>
+$("#tags_<%= @tag.name %>").replaceWith("<%= j(render @tag) %>");
 
 <% else %>
 $("#modalArea").html("<%= j(render 'edit_form', tag: @tag) %>")

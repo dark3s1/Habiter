@@ -4,9 +4,8 @@ class Habit < ApplicationRecord
     has_many :tags, through: :habit_tags
     accepts_nested_attributes_for :habit_tags
 
-    has_many :plans
     has_many :reals, dependent: :destroy
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: { scope: :user_id }
     validates :target, presence: true
 end

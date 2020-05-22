@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <%= render "layouts/sidebar", habits: @habits %>
+    <%= render "layouts/main_header" %>
+    <%= render "layouts/sidebar", habits: @habits, tags: @tags %>
     <%= render "layouts/flash" %>
     <div id="modalArea"></div>
     <main>
