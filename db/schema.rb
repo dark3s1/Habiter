@@ -31,8 +31,17 @@ ActiveRecord::Schema.define(version: 2020_05_21_070124) do
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
-# Could not dump table "reals" because of following StandardError
-#   Unknown type 'reference' for column 'positionparent'
+  create_table "reals", force: :cascade do |t|
+    t.integer "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "habit_id"
+    t.datetime "start_time"
+    t.integer "position"
+    t.integer "user_id"
+    t.index ["habit_id"], name: "index_reals_on_habit_id"
+    t.index ["user_id"], name: "index_reals_on_user_id"
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
