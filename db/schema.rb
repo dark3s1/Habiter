@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_092142) do
+ActiveRecord::Schema.define(version: 2020_05_21_070124) do
 
   create_table "habit_tags", force: :cascade do |t|
     t.integer "habit_id"
@@ -24,14 +24,10 @@ ActiveRecord::Schema.define(version: 2020_05_05_092142) do
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.string "color"
-    t.integer "length"
     t.integer "target"
-    t.integer "real"
-    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.datetime "start_time"
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
@@ -42,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_05_05_092142) do
     t.integer "habit_id"
     t.datetime "start_time"
     t.integer "position"
+    t.integer "user_id"
     t.index ["habit_id"], name: "index_reals_on_habit_id"
+    t.index ["user_id"], name: "index_reals_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
