@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_070124) do
+ActiveRecord::Schema.define(version: 2020_05_05_092142) do
 
   create_table "habit_tags", force: :cascade do |t|
     t.integer "habit_id"
@@ -24,27 +24,15 @@ ActiveRecord::Schema.define(version: 2020_05_21_070124) do
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.string "color"
+    t.integer "length"
     t.integer "target"
+    t.integer "real"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.index ["user_id"], name: "index_habits_on_user_id"
-  end
-
-  create_table "plans", force: :cascade do |t|
-    t.integer "habit_id"
-    t.integer "time"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["habit_id"], name: "index_plans_on_habit_id"
-  end
-
-  create_table "positionparents", force: :cascade do |t|
-    t.date "day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "start_time"
+    t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
   create_table "reals", force: :cascade do |t|
@@ -54,9 +42,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_070124) do
     t.integer "habit_id"
     t.datetime "start_time"
     t.integer "position"
-    t.integer "user_id"
     t.index ["habit_id"], name: "index_reals_on_habit_id"
-    t.index ["user_id"], name: "index_reals_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
