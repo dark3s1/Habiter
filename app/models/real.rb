@@ -6,5 +6,6 @@ class Real < ApplicationRecord
   
   validates :time, presence: true
   validates :start_time, presence: true
+  validates :habit_id, uniqueness: { scope: [:start_time, :user_id]}
 end
 
