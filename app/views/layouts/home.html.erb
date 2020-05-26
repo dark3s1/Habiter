@@ -13,5 +13,14 @@
     <%= render "layouts/flash" %>
     <div class="top_image">
     </div>
+    <div style="text-align:center">
+      <h3>紹介動画</h3>
+      <% iframe = content_tag(:iframe, '', width: 560, height: 315,
+      src: "https://www.youtube.com/embed/jYWQS1IogNo",
+      frameborder: 0,
+      allowfullscreen: true
+      ) %>
+      <%= content_tag(:div, iframe, class: 'youtube-container') %>
+    </div>
   </body>
 </html>
